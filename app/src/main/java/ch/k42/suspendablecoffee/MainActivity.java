@@ -13,7 +13,7 @@ import ch.k42.suspendablecoffee.fragments.FeedFragment;
 import ch.k42.suspendablecoffee.fragments.MapFragment;
 import ch.k42.suspendablecoffee.fragments.PayFragment;
 
-public class MainActivity extends AppCompatActivity implements FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener, PayFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements  MapFragment.OnFragmentInteractionListener, PayFragment.OnFragmentInteractionListener{
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
