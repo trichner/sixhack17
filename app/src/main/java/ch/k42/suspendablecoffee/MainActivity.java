@@ -4,8 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ import ch.k42.suspendablecoffee.fragments.FeedFragment;
 import ch.k42.suspendablecoffee.fragments.MapFragment;
 import ch.k42.suspendablecoffee.fragments.PayFragment;
 
-public class MainActivity extends AppCompatActivity implements FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener, PayFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener, PayFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements FeedFragment.OnFr
                     //args.putInt(MapFragment.ARG_POSITION, position);
                     mapFragment.setArguments(args);
 
-                    transaction = getSupportFragmentManager().beginTransaction();
+                    transaction = getFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack so the user can navigate back
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements FeedFragment.OnFr
                     //args.putInt(MapFragment.ARG_POSITION, position);
                     payFragment.setArguments(args);
 
-                    transaction = getSupportFragmentManager().beginTransaction();
+                    transaction = getFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack so the user can navigate back
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements FeedFragment.OnFr
                     //args.putInt(MapFragment.ARG_POSITION, position);
                     feedFragment.setArguments(args);
 
-                    transaction = getSupportFragmentManager().beginTransaction();
+                    transaction = getFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack so the user can navigate back
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements FeedFragment.OnFr
             firstFragment.setArguments(getIntent().getExtras());
 
             // Add the fragment to the 'fragment_container' FrameLayout
-            getSupportFragmentManager().beginTransaction()
+            getFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, firstFragment).commit();
         }
     }
