@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="control_background">#cc4285f4</color>
+    <color name="white_transparent">#a0ffffff</color>
 </resources>
