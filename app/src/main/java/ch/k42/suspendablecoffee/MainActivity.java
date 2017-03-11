@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements FeedFragment.OnFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
         if (findViewById(R.id.fragment_container) != null) {
