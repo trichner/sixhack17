@@ -1,19 +1,18 @@
 package ch.k42.suspendablecoffee;
 
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import ch.k42.suspendablecoffee.fragments.FeedFragment;
 import ch.k42.suspendablecoffee.fragments.MapFragment;
 import ch.k42.suspendablecoffee.fragments.PayFragment;
 
-public class MainActivity extends AppCompatActivity implements FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener, PayFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener, PayFragment.OnFragmentInteractionListener {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
