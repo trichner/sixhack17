@@ -49,8 +49,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_margin="8dp"
-                app:srcCompat="@color/cpb_red" />
+                android:layout_margin="8dp"/>
 
         </RelativeLayout>
 
