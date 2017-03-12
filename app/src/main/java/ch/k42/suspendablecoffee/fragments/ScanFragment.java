@@ -2,6 +2,7 @@ package ch.k42.suspendablecoffee.fragments;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import ch.k42.suspendablecoffee.MainActivity;
 import ch.k42.suspendablecoffee.R;
 
 public class ScanFragment extends Fragment {
+    static boolean found = false;
 
     public ScanFragment() {
         // Required empty public constructor
@@ -35,11 +37,11 @@ public class ScanFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        found = false;
 
-        View fragment = inflater.inflate(R.layout.fragment_scan, container, false);
+        final View fragment = inflater.inflate(R.layout.fragment_scan, container, false);
         // Inflate the layout for this fragment
         final SurfaceView cameraView = (SurfaceView) fragment.findViewById(R.id.camera_view);
-        final TextView barcodeInfo = (TextView) fragment.findViewById(R.id.code_info);
 
         final BarcodeDetector barcodeDetector =
                 new BarcodeDetector.Builder(getActivity())
@@ -79,8 +81,12 @@ public class ScanFragment extends Fragment {
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
-                if (barcodes.size() != 0) {
-                    updateHotCount(Integer.parseInt(barcodes.valueAt(0).displayValue));
+                if (!found && barcodes.size() != 0) {
+                    found = true;
+                    String strCount = barcodes.valueAt(0).displayValue;
+                    int count = Integer.parseInt(strCount);
+                    Snackbar.make(fragment, "Donated " + strCount + " coffees", Snackbar.LENGTH_LONG).show();
+                    updateHotCount(count);
                 }
 
             }
