@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import ch.k42.suspendablecoffee.R;
 import ch.k42.suspendablecoffee.minions.Emoijs;
+import ch.k42.suspendablecoffee.views.TitledImageCardView;
 
 public class FeedFragment extends Fragment {
 
@@ -27,13 +28,17 @@ public class FeedFragment extends Fragment {
 
         final View fragment = inflater.inflate(R.layout.fragment_feed, container, false);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Hey! Thanks a lot for the coffee, made my day! ");
-        sb.append(Character.toChars(0x1F60D));
-
         final TextView txtCard1 = (TextView) fragment.findViewById(R.id.txtCard1);
-        CharSequence txt = Emoijs.from("Hey! Thanks a lot for the coffee, made my day! U+1F60D");
-        txtCard1.setText(txt);
+        String txt1 = Emoijs.from("Hey! Thanks a lot for the coffee, made my day! U+1F60D");
+        txtCard1.setText(txt1);
+
+        final TextView txtCard2 = (TextView) fragment.findViewById(R.id.txtCard2);
+        String txt2 = Emoijs.from("Hey! Thanks a lot for the coffee, made my day! U+1F60D");
+        txtCard2.setText(txt2);
+
+        final TitledImageCardView card3 = (TitledImageCardView) fragment.findViewById(R.id.card3);
+        card3.setImageResource(R.drawable.cup_girl);
+        card3.setTitle("Hey! What the fuck! I burnt my f*king tongue! :(");
 
         return fragment;
     }
