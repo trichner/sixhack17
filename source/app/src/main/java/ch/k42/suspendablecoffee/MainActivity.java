@@ -1,11 +1,11 @@
 package ch.k42.suspendablecoffee;
 
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +17,7 @@ import ch.k42.suspendablecoffee.fragments.MapFragment;
 import ch.k42.suspendablecoffee.fragments.ScanFragment;
 
 
-public class MainActivity extends Activity implements MapFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener {
 
     private int hot_number = 0;
     private TextView ui_hot = null;
