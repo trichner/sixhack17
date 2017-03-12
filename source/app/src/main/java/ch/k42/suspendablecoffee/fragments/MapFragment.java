@@ -1,23 +1,18 @@
 package ch.k42.suspendablecoffee.fragments;
 
-import android.animation.Animator;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import ch.k42.suspendablecoffee.R;
 
 import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
 
 public class MapFragment extends Fragment {
 
@@ -48,7 +43,7 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(coffeeShopImg.getVisibility() == INVISIBLE){
+                if (coffeeShopImg.getVisibility() == INVISIBLE) {
                     coffeeShopImg.setAlpha(0.0f);
                     coffeeShopImg.setTranslationY(coffeeShopImg.getHeight());
                     coffeeShopImg.setVisibility(View.VISIBLE);
@@ -56,7 +51,7 @@ public class MapFragment extends Fragment {
                     coffeeShopImg.animate()
                             .translationY(0)
                             .alpha(1.0f);
-                }else{
+                } else {
 
                     coffeeShopImg.animate()
                             .translationY(coffeeShopImg.getHeight())
