@@ -1,7 +1,7 @@
 package ch.k42.suspendablecoffee.fragments;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.util.SparseArray;
@@ -10,7 +10,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -96,7 +95,7 @@ public class ScanFragment extends Fragment {
     }
 
     void updateHotCount(int i) {
-        MainActivity main = (MainActivity)getActivity();
+        MainActivity main = (MainActivity) getActivity();
         main.updateHotCount(i);
     }
 }
