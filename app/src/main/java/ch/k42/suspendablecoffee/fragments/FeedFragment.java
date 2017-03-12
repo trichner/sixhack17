@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import ch.k42.suspendablecoffee.R;
 import ch.k42.suspendablecoffee.minions.Emoijs;
+import ch.k42.suspendablecoffee.views.TitledImageCardView;
 
 public class FeedFragment extends Fragment {
 
@@ -27,15 +27,18 @@ public class FeedFragment extends Fragment {
 
         final View fragment = inflater.inflate(R.layout.fragment_feed, container, false);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Hey! Thanks a lot for the coffee, made my day! ");
-        sb.append(Character.toChars(0x1F60D));
-
-        final TextView txtCard1 = (TextView) fragment.findViewById(R.id.txtCard1);
-        CharSequence txt = Emoijs.from("Hey! Thanks a lot for the coffee, made my day! U+1F60D");
-        txtCard1.setText(txt);
+        setupTitledImageCardView(fragment, R.id.card1, R.drawable.cup_girl, R.drawable.six_logo, "Hey! Thanks for the coffee, really made my day U+1F60D");
+        setupTitledImageCardView(fragment, R.id.card2, R.drawable.cup_dude, R.drawable.aperture_logo, "Mhhhh U+2615");
+        setupTitledImageCardView(fragment, R.id.card3, R.drawable.cup_o_coffee, R.drawable.black_mesa_logo, "Enjoying it, thanks.");
 
         return fragment;
+    }
+
+    private void setupTitledImageCardView(View view, int resId, int imgResId, int logoResId, String title) {
+        final TitledImageCardView card = (TitledImageCardView) view.findViewById(resId);
+        card.setImageResource(imgResId);
+        card.setLogoResource(logoResId);
+        card.setTitle(Emoijs.from(title));
     }
 
 }
