@@ -27,8 +27,8 @@ public class FeedFragment extends Fragment {
 
         final View fragment = inflater.inflate(R.layout.fragment_feed, container, false);
 
-        setupTitledImageCardView(fragment, R.id.card1, R.drawable.cup_girl, R.drawable.six_logo, "Hey! Thanks for the coffee, really made my day U+1F60D");
-        setupTitledImageCardView(fragment, R.id.card2, R.drawable.cup_dude, R.drawable.aperture_logo, "Mhhhh U+2615");
+        setupTitledImageCardView(fragment, R.id.card1, R.drawable.cup_student_ben, R.drawable.six_logo, "Hey! Thanks for the coffee, really made my day U+1F60D");
+        setupTitledImageCardView(fragment, R.id.card2, R.drawable.cup_thumbsup, R.drawable.aperture_logo, "Mhhhh U+2615");
         setupTitledImageCardView(fragment, R.id.card3, R.drawable.cup_o_coffee, R.drawable.black_mesa_logo, "Enjoying it, thanks.");
 
         return fragment;
