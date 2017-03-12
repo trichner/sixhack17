@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Coffee \u0026 Deeds</string>
     <string name="title_map">Map</string>
-    <string name="title_pay">Pay</string>
+    <string name="title_scan">Scan</string>
     <string name="title_feed">Feed</string>
     <string name="picture">Picture</string>
     <string name="description_info">Info</string>

@@ -18,11 +18,12 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import ch.k42.suspendablecoffee.MainActivity;
 import ch.k42.suspendablecoffee.R;
 
-public class PayFragment extends Fragment {
+public class ScanFragment extends Fragment {
 
-    public PayFragment() {
+    public ScanFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +36,7 @@ public class PayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View fragment = inflater.inflate(R.layout.fragment_pay, container, false);
+        View fragment = inflater.inflate(R.layout.fragment_scan, container, false);
         // Inflate the layout for this fragment
         final SurfaceView cameraView = (SurfaceView) fragment.findViewById(R.id.camera_view);
         final TextView barcodeInfo = (TextView) fragment.findViewById(R.id.code_info);
@@ -79,18 +80,17 @@ public class PayFragment extends Fragment {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
-                    barcodeInfo.post(new Runnable() {    // Use the post method of the TextView
-                        public void run() {
-                            barcodeInfo.setText(    // Update the TextView
-                                    barcodes.valueAt(0).displayValue
-                            );
-                        }
-                    });
+                    updateHotCount(Integer.parseInt(barcodes.valueAt(0).displayValue));
                 }
+
             }
         });
 
         return fragment;
     }
 
+    void updateHotCount(int i) {
+        MainActivity main = (MainActivity)getActivity();
+        main.updateHotCount(i);
+    }
 }

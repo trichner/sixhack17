@@ -7,9 +7,9 @@
         android:title="@string/title_map" />
 
     <item
-        android:id="@+id/navigation_pay"
+        android:id="@+id/navigation_scan"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_pay" />
+        android:title="@string/title_scan" />
 
     <item
         android:id="@+id/navigation_feed"

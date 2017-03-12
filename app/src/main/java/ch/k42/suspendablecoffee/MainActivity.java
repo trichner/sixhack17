@@ -1,18 +1,28 @@
 package ch.k42.suspendablecoffee;
 
 import android.app.FragmentTransaction;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import ch.k42.suspendablecoffee.fragments.FeedFragment;
 import ch.k42.suspendablecoffee.fragments.MapFragment;
-import ch.k42.suspendablecoffee.fragments.PayFragment;
+import ch.k42.suspendablecoffee.fragments.ScanFragment;
+
 
 public class MainActivity extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener {
+
+    private int hot_number = 0;
+    private TextView ui_hot = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,17 +49,17 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
 // Commit the transaction
                     transaction.commit();
                     return true;
-                case R.id.navigation_pay:
+                case R.id.navigation_scan:
                     // Create fragment and give it an argument specifying the article it should show
-                    PayFragment payFragment = new PayFragment();
+                    ScanFragment scanFragment = new ScanFragment();
                     //args.putInt(MapFragment.ARG_POSITION, position);
-                    payFragment.setArguments(args);
+                    scanFragment.setArguments(args);
 
                     transaction = getFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack so the user can navigate back
-                    transaction.replace(R.id.fragment_container, payFragment);
+                    transaction.replace(R.id.fragment_container, scanFragment);
                     transaction.addToBackStack(null);
 
 // Commit the transaction
@@ -112,5 +122,31 @@ public class MainActivity extends AppCompatActivity implements MapFragment.OnFra
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_actionbar, menu);
+        final View menu_hotlist = menu.findItem(R.id.menu_hotlist).getActionView();
+        ui_hot = (TextView) menu_hotlist.findViewById(R.id.hotlist_hot);
+        updateHotCount(hot_number);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    // call the updating code on the main thread,
+    // so we can call this asynchronously
+    public void updateHotCount(final int new_hot_number) {
+        hot_number = new_hot_number;
+        if (ui_hot == null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ui_hot.setVisibility(View.VISIBLE);
+                ui_hot.setText(Integer.toString(new_hot_number));
+            }
+        });
     }
 }
